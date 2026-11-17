@@ -1,3 +1,5 @@
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template/synapse-1?utm_medium=integration&utm_source=button&utm_campaign=synapse)
+
 # Synapse on Railway
 
 A Railway template for [Synapse](https://github.com/element-hq/synapse), the Matrix homeserver by Element. It runs Synapse **v1.165.0** from the official image `ghcr.io/element-hq/synapse:v1.165.0`, pinned by digest in the [`Dockerfile`](Dockerfile), with Railway's PostgreSQL.
