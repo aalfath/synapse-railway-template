@@ -8,8 +8,8 @@ COPY log.config /conf/railway-log.config
 ENV SYNAPSE_DATA_DIR=/data \
     PORT=8008
 
+# Data lives on the Railway volume mounted at /data (Railway rejects Dockerfile VOLUME).
 EXPOSE 8008
-VOLUME ["/data"]
 
 HEALTHCHECK --start-period=60s --interval=15s --timeout=5s \
     CMD curl -fSs "http://localhost:${PORT:-8008}/health" || exit 1
