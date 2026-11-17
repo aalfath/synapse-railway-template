@@ -1,0 +1,23 @@
+# Local test only (not used by Railway): mirrors the template's two services.
+services:
+  postgres:
+    image: postgres:17
+    labels: {her: "2493"}
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: localtestpw
+      POSTGRES_DB: railway
+    volumes: [pg:/var/lib/postgresql/data]
+  synapse:
+    build: .
+    labels: {her: "2493"}
+    environment:
+      PORT: "8008"
+      SYNAPSE_SERVER_NAME: synapse.local.test
+      DATABASE_URL: postgresql://postgres:localtestpw@postgres:5432/railway
+      SYNAPSE_ADMIN_USER: admin
+      SYNAPSE_ADMIN_PASSWORD: local-test-admin-pw
+    volumes: [data:/data]
+    ports: ["42493:8008"]
+    depends_on: [postgres]
+volumes: {pg: {}, data: {}}
